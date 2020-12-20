@@ -1,9 +1,20 @@
 import React from 'react';
+import logoSvg from '../assets/img/pizza-logo.svg';
+import Button from '../components/Button';  
 
-function Button(props) {
-
+function Header() {
     return (
-        <button className="button button--cart">
+        <div className="header">
+        <div className="container">
+          <div className="header__logo">
+            <img width="38" src={logoSvg} alt="Pizza logo" />
+            <div>
+              <h1>React Pizza</h1>
+              <p>самая вкусная пицца во вселенной</p>
+            </div>
+          </div>
+          <div className="header__cart">
+            <Button className="button--cart">
             <span>520 ₽</span>
               <div className="button__delimiter"></div>
               <svg
@@ -36,9 +47,11 @@ function Button(props) {
                 />
               </svg>
               <span>3</span>
-        </button>
+            </Button>
+          </div>
+        </div>
+      </div>
     )
-
 }
 
-export default Button;
+export default Header;
