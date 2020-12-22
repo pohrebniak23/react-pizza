@@ -18,7 +18,7 @@
             {
                 items.map((obj) => (
                 <PizzaBlock key={obj.id}
-                    {...obj} name={1}
+                    {...obj}
                 />
                 ))
             }

@@ -17,11 +17,6 @@ export default function PizzaBlock({name,types,sizes,imageUrl,price}) {
         setActiveSize(index);
     }
 
-    PizzaBlock.propTypes = {
-        name: PropTypes.string, 
-        
-    };
-
     return (
         <div className="pizza-block">
             <img
@@ -81,3 +76,16 @@ export default function PizzaBlock({name,types,sizes,imageUrl,price}) {
         </div> 
     )
 }
+
+PizzaBlock.propTypes = {
+    name: PropTypes.string.isRequired, 
+    imageUrl: PropTypes.string.isRequired,
+    price: PropTypes.number.isRequired,
+    types: PropTypes.arrayOf(PropTypes.number).isRequired,
+    sizes: PropTypes.arrayOf(PropTypes.number).isRequired
+};
+
+PizzaBlock.defaultProps = {
+    types: [],
+    sizes: [],
+};
