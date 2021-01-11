@@ -5,7 +5,7 @@ export default function SortPupup({items}) {
     const [visiblePopup, setVisiblePopup] = React.useState(false);
     const [activeSort, setActiveSort] = React.useState(0);
     const sortRef = React.useRef();
-    const activeLabel = items[activeSort];
+    const activeLabel = items[activeSort].name;
 
     const toggleVisiblePopup = () => {
         setVisiblePopup(!visiblePopup);
@@ -51,11 +51,11 @@ export default function SortPupup({items}) {
                 <div className="sort__popup">
                     <ul>
                         {items &&
-                            items.map ((name, index) => (
+                            items.map ((obj, index) => (
                                 <li className={activeSort === index ? 'active' : ''}
                                     onClick={() => pickActiveSort(index)}
-                                    key={`${name}_${index}`}
-                                    >{name}
+                                    key={`${obj.name}_${index}`}
+                                    >{obj.name}
                                 </li>
                             ))
                         }
