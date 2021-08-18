@@ -1,31 +1,34 @@
  import React from 'react'
  import { Categories, SortPopup, PizzaBlock } from '../components'
  
- export default function Home({items}) {
+ export default function Home({pizzaItem}) {
+
+    console.log(pizzaItem)
+
      return (
         <div className="container">
-        <div className="content__top">
+            <div className="content__top">
 
-          <Categories onClickItem={(name) => console.log(name)} items={[
-            "Мясные", "Вегетерианская", "Гриль", "Острые", "Закрытые"
-          ]} />
+            <Categories onClickItem={(name) => console.log(name)} items={[
+                "Мясные", "Вегетерианская", "Гриль", "Острые", "Закрытые"
+            ]} />
 
-         <SortPopup items={[{name: "популярности", type: "popular"},
-            {name: "цене", type: "price"}, 
-            {name: "алфавиту", type: "alphabet"}]}
-        />
+            <SortPopup items={[{name: "популярности", type: "popular"},
+                {name: "цене", type: "price"}, 
+                {name: "алфавиту", type: "alphabet"}]}
+            />
 
-        </div>
-        <h2 className="content__title">Все пиццы</h2>
-        <div className="content__items">
-            {
-                items.map((obj) => (
-                <PizzaBlock key={obj.id}
-                    {...obj}
-                />
-                ))
-            }
-        </div>
+            </div>
+            <h2 className="content__title">Все пиццы</h2>
+            <div className="content__items">
+                {
+                    pizzaItem.map((obj) => (
+                        <PizzaBlock key={obj.id}
+                            {...obj}
+                        />
+                    ))
+                }
+            </div>
       </div>
      )
  }
