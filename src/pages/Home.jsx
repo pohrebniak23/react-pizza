@@ -2,9 +2,7 @@
  import { Categories, SortPopup, PizzaBlock } from '../components'
  
  export default function Home({pizzaItem}) {
-
-    console.log(pizzaItem)
-
+     
      return (
         <div className="container">
             <div className="content__top">
