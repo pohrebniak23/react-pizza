@@ -11,9 +11,11 @@
                 "Мясные", "Вегетерианская", "Гриль", "Острые", "Закрытые"
             ]} />
 
-            <SortPopup items={[{name: "популярности", type: "popular"},
-                {name: "цене", type: "price"}, 
-                {name: "алфавиту", type: "alphabet"}]}
+            <SortPopup items={[
+                    {name: "популярности", type: "popular"},
+                    {name: "цене", type: "price"}, 
+                    {name: "алфавиту", type: "alphabet"}
+                ]}
             />
 
             </div>

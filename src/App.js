@@ -5,28 +5,39 @@ import { connect } from "react-redux";
 import { Home, Cart } from './pages';
 import { Route } from 'react-router-dom';
 import React, {useEffect, useState} from 'react';
-import { setPizzas } from './redux/actions/pizzas';
+import { setPizzas } from './redux/actions/pizzas'; 
 
-function App() {
+class App extends React.Component {
 
-  const [pizzas, setPizzas] = useState([]);
-
-  useEffect(() => {
+  componentDidMount() {
     axios.get('http://localhost:3000/db.json').then(({data}) => {
-      setPizzas(data.pizzas)
+      this.props.setPizzas(data.pizzas); // Вызывает файл /redux/actions/pizzas.js
     })
-  }, []) 
+  }
 
-  return (
-    <div className="wrapper">
-      <Header />
-      <div className="content">
-        <Route path="/" render={() => <Home pizzaItem={pizzas} />} exact />
-        <Route path="/cart" component={Cart} exact />
+  render() {
+    return (
+      <div className="wrapper">
+        <Header />
+        <div className="content">
+          <Route path="/" render={() => <Home pizzaItem={this.props.items} />} exact />
+          <Route path="/cart" component={Cart} exact />
+        </div>
       </div>
-    </div>
-  );
+    )
+  }
 }
 
+const mapStateToProps = (state) => {
+  return {
+    items: state.pizzas.items,
+  };
+};
 
-export default App;
+const mapDispatchToProps = dispatch => {
+  return {
+    setPizzas: (items) =>  dispatch(setPizzas(items))
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
